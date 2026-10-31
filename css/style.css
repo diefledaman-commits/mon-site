@@ -858,7 +858,7 @@ body {
     
     /* Paramètres de l'animation */
     animation-name: zoomFond;
-    animation-duration: 20s;       /* Dure 10 secondes */
+    animation-duration: 15s;       /* Dure 10 secondes */
     animation-iteration-count: infinite; /* Tourne en boucle à l'infini */
     animation-direction: alternate; /* Fait des allers-retours (zoom puis dézoom) pour que ce soit fluide */
     animation-timing-function: ease-in-out; /* Début et fin en douceur */
