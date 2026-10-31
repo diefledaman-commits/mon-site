@@ -4,7 +4,7 @@
     --primary-light: #2e7d32;
     --accent: #4e9f3d;
     --dark: #191a19;
-    --text: #4a5568;
+    --text: #100511;
     --light-bg: #f8fafc;
     --white: #ffffff;
     --border: #e2e8f0;
@@ -125,7 +125,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #334155;
+    color: #100511;
     font-weight: 500;
     font-size: 15px;
     transition: color 0.2s;
@@ -839,4 +839,35 @@ body {
     width: 33.33%;
     height: 200px;
     object-fit: cover;
+}/* 1. On définit l'animation (le zoom de 100% à 115%) */
+@keyframes zoomFond {
+    from {
+        background-size: 100%;
+    }
+    to {
+        background-size: 115%;
+    }
+}
+
+/* 2. On applique l'animation à votre section Hero */
+.hero {
+    /* Votre image avec le calque sombre */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/image4.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Paramètres de l'animation */
+    animation-name: zoomFond;
+    animation-duration: 20s;       /* Dure 10 secondes */
+    animation-iteration-count: infinite; /* Tourne en boucle à l'infini */
+    animation-direction: alternate; /* Fait des allers-retours (zoom puis dézoom) pour que ce soit fluide */
+    animation-timing-function: ease-in-out; /* Début et fin en douceur */
+}.team-card .brand-logo {
+    width: 150px;  /* La largeur souhaitée */
+    height: 150px; /* La hauteur souhaitée (souvent égale à la largeur pour un carré) */
+    object-fit: cover; /* C'est cette ligne qui rogne l'image sans la déformer */
+    
+    /* Optionnel : pour centrer l'image comme vu précédemment */
+    display: block;
+    margin: 0 auto; 
 }
