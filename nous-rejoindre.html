@@ -292,14 +292,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label>CV et lettre de motivation *</label>
-                        <div style="border: 2px dashed #ccc; padding: 30px; text-align: center; border-radius: 6px; background: #fafafa; cursor: pointer;">
-                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #999; margin-bottom: 10px;"></i>
-                            <p style="margin: 0; color: #555;">Glissez votre dossier ici ou cliquez pour le choisir</p>
-                            <small style="color: #888;">(Un seul fichier PDF, 10 Mo max. CV et lettre réunis dans un PDF)</small>
-                            <input type="file" style="display: none;" accept=".pdf">
-                        </div>
-                    </div>
+					<label>CV et lettre de motivation *</label>
+    
+					<!-- L'astuce : englober la zone dans un <label for="cv_upload"> -->
+					<label for="cv_upload" style="display: block; border: 2px dashed #ccc; padding: 30px; text-align: center; border-radius: 6px; background: #fafafa; cursor: pointer; transition: 0.3s;" onmouseover="this.style.backgroundColor='#eefcf1'; this.style.borderColor='#0E7A0D';" onmouseout="this.style.backgroundColor='#fafafa'; this.style.borderColor='#ccc';">
+						<i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #999; margin-bottom: 10px;"></i>
+						<p style="margin: 0; color: #555; font-weight: normal;">Glissez votre dossier ici ou cliquez pour le choisir</p>
+						<small style="color: #888; font-weight: normal;">(Un seul fichier PDF, 10 Mo max. CV et lettre réunis dans un PDF)</small>
+        
+					<!-- Le vrai bouton d'upload est caché, mais activé par le label -->
+						<input type="file" id="cv_upload" name="cv_upload" accept=".pdf" required style="display: none;">
+					</label>
+					</div>
 
                     <div class="form-group">
                         <label>Votre message *</label>
