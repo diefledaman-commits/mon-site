@@ -295,14 +295,28 @@
     </div>
 
     <div class="form-group">
-        <label>CV et lettre de motivation *</label>
-        <label for="cv_upload" style="display: block; border: 2px dashed #ccc; padding: 30px; text-align: center; border-radius: 6px; background: #fafafa; cursor: pointer; transition: 0.3s;" onmouseover="this.style.backgroundColor='#eefcf1'; this.style.borderColor='#0E7A0D';" onmouseout="this.style.backgroundColor='#fafafa'; this.style.borderColor='#ccc';">
-            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #999; margin-bottom: 10px;"></i>
-            <p style="margin: 0; color: #555; font-weight: normal;">Glissez votre dossier ici ou cliquez pour le choisir</p>
-            <small style="color: #888; font-weight: normal;">(Un seul fichier PDF, 10 Mo max. CV et lettre réunis)</small>
-            <input type="file" id="cv_upload" name="fichier_cv" accept=".pdf" required style="display: none;">
-        </label>
-    </div>
+    <label>CV et lettre de motivation *</label>
+    
+    <label for="cv_upload" id="zone_upload" style="display: block; border: 2px dashed #ccc; padding: 30px; text-align: center; border-radius: 6px; background: #fafafa; cursor: pointer; transition: 0.3s;" onmouseover="this.style.backgroundColor='#eefcf1'; this.style.borderColor='#0E7A0D';" onmouseout="if(!document.getElementById('cv_upload').value) { this.style.backgroundColor='#fafafa'; this.style.borderColor='#ccc'; }">
+        
+        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #999; margin-bottom: 10px;"></i>
+        
+        <!-- Ce texte sera remplacé par le nom du fichier -->
+        <p id="nom_fichier" style="margin: 0; color: #555; font-weight: bold;">Glissez votre dossier ici ou cliquez pour le choisir</p>
+        
+        <small style="color: #888; font-weight: normal;">(Un seul fichier PDF, 10 Mo max. CV et lettre réunis)</small>
+        
+        <!-- Le bouton caché avec l'instruction onchange -->
+        <input type="file" id="cv_upload" name="fichier_cv" accept=".pdf" required style="display: none;" 
+               onchange="
+                   var nom = this.files[0] ? this.files[0].name : 'Glissez votre dossier ici ou cliquez pour le choisir';
+                   document.getElementById('nom_fichier').innerText = nom;
+                   document.getElementById('nom_fichier').style.color = '#0E7A0D';
+                   document.getElementById('zone_upload').style.borderColor = '#0E7A0D';
+                   document.getElementById('zone_upload').style.backgroundColor = '#eefcf1';
+               ">
+    </label>
+</div>
 
     <div class="form-group">
         <label>Votre message *</label>
