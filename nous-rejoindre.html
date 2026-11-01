@@ -217,12 +217,19 @@
             <div class="form-container">
                 <span class="badge-gold">Candidature en ligne</span>
                 <h2 style="margin-top: 10px;">Postuler ou proposer un partenariat</h2>
-                <form action="https://formsubmit.co/ecosolutionsworldwide1@gmail.com" method="POST" enctype="multipart/form-data" style="margin-top: 30px;">
+ <form action="https://formsubmit.co/ecosolutionsworldwide1@gmail.com" method="POST" enctype="multipart/form-data" style="margin-top: 30px;">  
+		<!-- 1. Personnaliser l'objet de l'e-mail que vous recevez -->
+    <input type="hidden" name="_subject" value="Nouvelle candidature - Écosolutions Worldwide">
     
-    <!-- Optionnel : Page de remerciement après envoi (remplacez l'URL par la vôtre) -->
-    <!-- <input type="hidden" name="_next" value="https://votre-site.github.io/merci.html"> -->
+    <!-- 2. Rendre l'e-mail reçu plus joli et lisible (format tableau) -->
+    <input type="hidden" name="_template" value="table">
     
-    <div class="form-group">
+    <!-- 3. Envoyer un e-mail de confirmation automatique au candidat -->
+    <input type="hidden" name="_autoresponse" value="Bonjour ! L'équipe d'Écosolutions Worldwide confirme la bonne réception de votre candidature/proposition. Nous l'étudierons avec attention et vous recontacterons si votre profil correspond à nos besoins actuels. Merci pour votre engagement envers la restauration écologique !">
+    
+    <!-- 4. Rediriger vers la page d'accueil après l'envoi (remplacez par votre vrai lien GitHub) -->
+    <input type="hidden" name="_next" value="https://VOTRE-NOM.github.io/VOTRE-PROJET/index.html">
+		<div class="form-group">
         <label>Vous cherchez : Offre concernée *</label>
         <select class="form-control" name="offre" required>
             <option value="">Choisir...</option>
