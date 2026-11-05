@@ -1,20 +1,29 @@
-// Gestion du panneau latéral
+// Gestion du panneau latéral (compatible avec le CSS mobile-menu / backdrop)
 function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
+    const sidebar = document.getElementById("sidebar") || document.querySelector(".mobile-menu");
+    const backdrop = document.querySelector(".backdrop");
     const body = document.body;
 
-    if (sidebar.style.width === "250px") {
-        // Si ouvert → fermer
-        sidebar.style.width = "0";
-        body.classList.remove("sidebar-open");
+    if (!sidebar) return;
+
+    // On vérifie si la classe "open" est présente
+    const isOpen = sidebar.classList.contains("open");
+
+    if (isOpen) {
+        closeSidebar();
     } else {
-        // Si fermé → ouvrir
-        sidebar.style.width = "250px";
+        sidebar.classList.add("open");
+        if (backdrop) backdrop.classList.add("open");
         body.classList.add("sidebar-open");
     }
 }
 
 function closeSidebar() {
-    document.getElementById("sidebar").style.width = "0";
-    document.body.classList.remove("sidebar-open");
+    const sidebar = document.getElementById("sidebar") || document.querySelector(".mobile-menu");
+    const backdrop = document.querySelector(".backdrop");
+    const body = document.body;
+
+    if (sidebar) sidebar.classList.remove("open");
+    if (backdrop) backdrop.classList.remove("open");
+    body.classList.remove("sidebar-open");
 }
