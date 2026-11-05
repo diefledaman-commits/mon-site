@@ -1,29 +1,32 @@
-// Gestion du panneau latéral (compatible avec le CSS mobile-menu / backdrop)
-function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar") || document.querySelector(".mobile-menu");
-    const backdrop = document.querySelector(".backdrop");
-    const body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+    // Récupération des éléments HTML par leurs ID
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const backdrop = document.getElementById('backdrop');
 
-    if (!sidebar) return;
-
-    // On vérifie si la classe "open" est présente
-    const isOpen = sidebar.classList.contains("open");
-
-    if (isOpen) {
-        closeSidebar();
-    } else {
-        sidebar.classList.add("open");
-        if (backdrop) backdrop.classList.add("open");
-        body.classList.add("sidebar-open");
+    // Fonction d'ouverture
+    function openMenu() {
+        if (mobileMenu) mobileMenu.classList.add('open');
+        if (backdrop) backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Bloque le défilement arrière-plan sur Android/iOS
     }
-}
 
-function closeSidebar() {
-    const sidebar = document.getElementById("sidebar") || document.querySelector(".mobile-menu");
-    const backdrop = document.querySelector(".backdrop");
-    const body = document.body;
+    // Fonction de fermeture
+    function closeAll() {
+        if (mobileMenu) mobileMenu.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+        document.body.style.overflow = ''; // Rétablit le défilement
+    }
 
-    if (sidebar) sidebar.classList.remove("open");
-    if (backdrop) backdrop.classList.remove("open");
-    body.classList.remove("sidebar-open");
-}
+    // Événements d'ouverture et de fermeture
+    if (menuToggle) menuToggle.addEventListener('click', openMenu);
+    if (closeMenu) closeMenu.addEventListener('click', closeAll);
+    if (backdrop) backdrop.addEventListener('click', closeAll);
+
+    // Fermeture automatique lors d'un clic sur un lien de la navigation
+    const mobileLinks = document.querySelectorAll('.mobile-links a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeAll);
+    });
+});
